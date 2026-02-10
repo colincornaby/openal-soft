@@ -89,6 +89,14 @@ constexpr std::array<AudioChannelLabel, 8> X71ChanMap {
         kAudioChannelLabel_LeftSurround, kAudioChannelLabel_RightSurround,
         kAudioChannelLabel_LeftCenter, kAudioChannelLabel_RightCenter
 };
+static constexpr std::array<AudioChannelLabel, 12> X714ChanMap {
+        kAudioChannelLabel_Left, kAudioChannelLabel_Right,
+        kAudioChannelLabel_Center, kAudioChannelLabel_LFEScreen,
+        kAudioChannelLabel_LeftSurround, kAudioChannelLabel_RightSurround,
+        kAudioChannelLabel_LeftCenter, kAudioChannelLabel_RightCenter,
+        kAudioChannelLabel_VerticalHeightLeft, kAudioChannelLabel_VerticalHeightRight,
+        kAudioChannelLabel_TopBackLeft, kAudioChannelLabel_TopBackRight
+};
 
 struct FourCCPrinter {
     char mString[sizeof(UInt32) + 1]{};
@@ -531,7 +539,8 @@ bool CoreAudioPlayback::reset()
         bool is_51rear;
     };
 
-    static constexpr std::array<ChannelMap, 7> chanmaps{{
+    static constexpr std::array<ChannelMap, 8> chanmaps{{
+        { DevFmtX714, X714ChanMap, false },
         { DevFmtX71, X71ChanMap, false },
         { DevFmtX61, X61ChanMap, false },
         { DevFmtX51, X51ChanMap, false },
